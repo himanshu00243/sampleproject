@@ -19,7 +19,7 @@ phases:
   build:
     commands:
       - echo "Build phase ..."
-      - sonar-scanner -Dsonar.login=squ_a355c6fa0bbee98d653564441b56ae0bdaf368b2 -Dsonar.host.url=http://4.245.219.121:9000 -Dsonar.projectKey=sast-project -Dsonar.java.binaries=src/main/java
+      - sonar-scanner -Dsonar.login=squ_a355c6fa0bbee98d653564441b56ae0bdaf368b2 -Dsonar.host.url=http://4.245.219.121:9000 -Dsonar.projectKey=python-project
   post_build:
     commands:
       - echo "Post build phase ..."
