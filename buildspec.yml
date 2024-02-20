@@ -1,0 +1,25 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - echo "Install phase ..."
+    runtime-versions:
+      python: 3.7
+  pre_build:
+    commands:
+      - echo "Pre build phase ..."
+      - apt-get update
+      - apt-get install -y jq
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+      - echo "Current path is >>>"
+      - sh $pwd
+      - unzip ./sonar-scanner-cli-4.7.0.2747-linux.zip
+      - ls $pwd
+      - export PATH=$PATH:./sonar-scanner-4.7.0.2747-linux/bin/
+  build:
+    commands:
+      - echo "Build phase ..."
+      - sonar-scanner -Dsonar.login=squ_a355c6fa0bbee98d653564441b56ae0bdaf368b2 -Dsonar.host.url=http://4.245.219.121:9000 -Dsonar.projectKey=sast-project -Dsonar.java.binaries=src/main/java
+  post_build:
+    commands:
+      - echo "Post build phase ..."
